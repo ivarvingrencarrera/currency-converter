@@ -11,12 +11,6 @@ python = "^3.11"
 
 
 [tool.poetry.group.dev.dependencies]
-pytest = "*"
-pytest-cov = "*"
-blue = "*"
-isort = "*"
-ruff = "*"
-mypy = "*"
 pip-audit = "*"
 
 
@@ -25,6 +19,11 @@ mkdocs-material = "*"
 mkdocstrings = "*"
 mkdocstrings-python = "*"
 mkdocs-macros-plugin = "*"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "*"
+pytest-cov = "*"
 
 [build-system]
 requires = ["poetry-core"]
