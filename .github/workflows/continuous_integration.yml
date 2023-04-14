@@ -7,13 +7,13 @@ jobs:
   setup:
     uses: ./.github/workflows/setup.yml
 
-  # lint:
-  #   needs: setup
-  #   uses: ./.github/workflows/lint.yml
-  #   secrets: inherit
+  lint:
+    needs: setup
+    uses: ./.github/workflows/lint.yml
+    #secrets: inherit
 
-  # test:
-  #   needs: setup
-  #   uses: ./.github/workflows/test.yml
-  #   secrets: inherit
+  test:
+    needs: lint
+    uses: ./.github/workflows/test.yml
+    #secrets: inherit
 

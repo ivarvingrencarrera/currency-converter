@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Install test dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root --extras "test"
+        run: poetry install --no-interaction --with test
 
       - name: Testing
         run: poetry run make test
