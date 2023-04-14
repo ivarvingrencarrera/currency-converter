@@ -8,16 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Load cached venv
-        id: cached-poetry-dependencies
-        uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
-
       - name: Install test dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-root --extras "test"
 
-      - name: Test
+      - name: Testing
         run: poetry run make test
