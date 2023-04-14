@@ -14,7 +14,7 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
           installer-parallel: true
-          
+
       # - name: Load cached venv
       #   id: cached-poetry-dependencies
       #   uses: actions/cache@v3
@@ -25,5 +25,6 @@ jobs:
       - name: Install lint dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction
-      - name: Lint
+      
+      - name: Linting
         run: poetry run make lint
