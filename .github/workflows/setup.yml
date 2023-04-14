@@ -34,6 +34,10 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --only main
 
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
       - name: Install test dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --with test
