@@ -19,6 +19,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-poetry-
 
+      - name: Check Poetry version
+        run: poetry --version
+
       - name: Install lint dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --with lint
