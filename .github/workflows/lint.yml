@@ -17,7 +17,6 @@ jobs:
 
       - name: Install lint dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --no-interaction --no-root --extras "lint"
-
+        run: poetry install --no-interaction --no-root --with lint
       - name: Lint
         run: poetry run make lint
