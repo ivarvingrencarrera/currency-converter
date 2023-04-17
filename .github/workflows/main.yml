@@ -32,11 +32,15 @@ jobs:
         name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction
-  test:
-    name: Test
-    runs-on: ubuntu-latest
-    needs: Build
-    steps:
       - 
         name: Testing
         run: poetry run make test
+
+  # test:
+  #   name: Test
+  #   runs-on: ubuntu-latest
+  #   needs: Build
+  #   steps:
+  #     - 
+  #       name: Testing
+  #       run: poetry run make test
