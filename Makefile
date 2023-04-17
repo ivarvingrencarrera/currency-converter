@@ -1,6 +1,8 @@
 lint:
 	@echo
-	mypy . 2>&1 | tee lint_result.txt
+	isort . 
+	
+
 
 format:
 	ruff --silent --exit-zero --fix .
