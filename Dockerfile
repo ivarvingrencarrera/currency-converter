@@ -6,7 +6,8 @@ FROM python:3.11-slim-bullseye AS base
 WORKDIR /app
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONPATH=.:src:./.venv/lib/python3.11/site-packages:$PYTHONPATH
-RUN apt-get update -y && apt-get upgrade -y apt-get install -y build-essential && \
+RUN apt-get update && \
+    apt-get install -y build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 
