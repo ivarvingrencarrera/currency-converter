@@ -16,7 +16,7 @@ FROM base AS development
 ENV POETRY_HOME=/opt/poetry
 ENV POETRY_VIRTUALENVS_IN_PROJECT=false
 ENV PATH="$POETRY_HOME/bin:$PATH"
-RUN apt-get install curl -y && apt-get install make
+RUN apt-get install curl -y
 RUN curl -sSL https://install.python-poetry.org | python -
 COPY pyproject.toml poetry.lock* ./
 RUN poetry install --without doc --no-interaction --no-ansi -vvv
