@@ -47,7 +47,7 @@ jobs:
           run: docker pull ${DOCKER_IMAGE}
         -
           name: Testing
-          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && poetry --version" -i
+          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make test"
         -
           run: make ivar
       env:
