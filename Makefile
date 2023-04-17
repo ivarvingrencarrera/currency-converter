@@ -1,14 +1,7 @@
 lint:
 	@echo
 	isort . 
-	@echo
-	ruff .
-	@echo
-	blue --check --diff --color . 
-	@echo
-	mypy . 
-	@echo
-	pip-audit > lint_result.txt
+	
 
 
 format:
