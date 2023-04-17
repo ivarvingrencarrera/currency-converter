@@ -1,5 +1,5 @@
 lint:
-	mypy . pip-audit
+	blue --check --diff --color . mypy . pip-audit
 
 format:
 	ruff --silent --exit-zero --fix .
