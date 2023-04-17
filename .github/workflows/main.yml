@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - 
-        name: Set up python
+        name: Set up Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.11'
@@ -17,10 +17,8 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       - 
-        name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-          virtualenvs-in-project: true
+        name: Set up Poetry
+        uses: eins78/setup-poetry@v1
       - 
         name: Load cached venv
         id: cached-poetry-dependencies
