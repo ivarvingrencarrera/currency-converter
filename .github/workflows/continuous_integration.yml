@@ -47,9 +47,7 @@ jobs:
           run: docker pull ${DOCKER_IMAGE}
         -
           name: Testing
-          run: docker run --rm -it ${DOCKER_IMAGE} /bin/bash -c "
-            source /app/.venv/bin/activate
-            "
+          run: docker run --rm -it ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate" -i
           #run: docker run --rm -e -t ${DOCKER_IMAGE} make ivar
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
