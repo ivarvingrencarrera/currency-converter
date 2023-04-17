@@ -1,11 +1,11 @@
 lint:
-	isort  
+	isort /app
 	@echo
-	ruff 
+	ruff .
 	@echo
-	blue --check --diff --color 
+	blue --check --diff --color .
 	@echo
-	mypy 
+	mypy .
 	@echo
 	pip-audit
 	
