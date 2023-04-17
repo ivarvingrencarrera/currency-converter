@@ -68,8 +68,6 @@ jobs:
           name: Checkout
           uses: actions/checkout@v2
         -
-          run: docker pull ${DOCKER_IMAGE}
-        -
           name: Testing
           run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make linting"
       env:
