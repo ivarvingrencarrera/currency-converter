@@ -1,5 +1,4 @@
-from app import app
-
+from src.app import app
 
 def test_hello_world():
     with app.test_client() as client:
