@@ -19,8 +19,10 @@ FROM base AS development
 ENV POETRY_HOME=/opt/poetry
 ENV POETRY_VIRTUALENVS_IN_PROJECT=false
 ENV PATH="$POETRY_HOME/bin:$PATH"
-RUN apt-get install curl -y
-RUN curl -sSL https://install.python-poetry.org | python -
+RUN apt-get update && \
+    apt-get install -y curl && \
+    curl -sSL https://install.python-poetry.org | python - && \
+    rm -rf /var/lib/apt/lists/*
 COPY pyproject.toml poetry.lock* ./
 RUN poetry install --without doc --no-interaction --no-ansi -vvv
 RUN poetry export --only main -f requirements.txt > requirements.txt
