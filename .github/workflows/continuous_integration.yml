@@ -34,11 +34,6 @@ jobs:
     needs: build
     name: Testing
     runs-on: ubuntu-latest
-    # container:
-    #   image: currency_converter_development:${{github.run_number}}
-    #   credentials:
-    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     password: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - 
         name: Login to Docker Hub
@@ -57,13 +52,28 @@ jobs:
     env:
       DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
 
-    #secrets: inherit
 
-  # lint:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter:${{github.run_number}}
-  #   steps:
+  lint:
+      needs: test
+      name: Linting
+      runs-on: ubuntu-latest
+      steps:
+        - 
+          name: Login to Docker Hub
+          uses: docker/login-action@v2
+          with:
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        - 
+          name: Checkout
+          uses: actions/checkout@v2
+        -
+          run: docker pull ${DOCKER_IMAGE}
+        - 
+          name: Linting
+          run: make lint
+      env:
+        DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
 
   
 
