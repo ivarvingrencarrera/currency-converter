@@ -45,7 +45,7 @@ jobs:
           uses: actions/checkout@v2
         - 
           name: Testing
-          run: docker run --rm -e PYTHONPATH=/app/src -it ${DOCKER_IMAGE} make testing
+          run: docker run --rm -e PYTHONPATH=/app/src -t ${DOCKER_IMAGE} make testing
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
     
