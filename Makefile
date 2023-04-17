@@ -1,5 +1,5 @@
 lint:
-	isort /app
+	isort .
 	@echo
 	ruff .
 	@echo
