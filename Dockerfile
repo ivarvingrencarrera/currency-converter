@@ -5,7 +5,7 @@
 FROM python:3.11-slim-bullseye AS base
 WORKDIR /app
 ENV PYTHONUNBUFFERED=1
-RUN apt-get update -y && apt-get upgrade -y
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y make
 
 #
 # Development image
