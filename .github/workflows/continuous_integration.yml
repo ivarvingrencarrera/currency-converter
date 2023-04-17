@@ -5,7 +5,7 @@ on: [push]
 jobs:
 
   build:
-    name: Build Docker Image
+    name: Build Docker Development Image
     runs-on: ubuntu-latest
     steps:
       - 
@@ -72,8 +72,8 @@ jobs:
         - 
           name: Linting
           run: make lint
+        -
+          name: Display lint results
+          run: cat lint_result.txt
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
-
-  
-

@@ -8,7 +8,7 @@ lint:
 	@echo
 	mypy . 
 	@echo
-	pip-audit
+	pip-audit > lint_result.txt
 
 
 format:
