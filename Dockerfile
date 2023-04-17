@@ -18,6 +18,7 @@ ENV PATH="$POETRY_HOME/bin:$PATH"
 RUN apt-get install curl -y
 RUN curl -sSL https://install.python-poetry.org | python -
 COPY pyproject.toml poetry.lock* ./
+RUN poetry config virtualenvs.in-project true
 RUN poetry install --without doc --no-interaction --no-ansi -vvv
 RUN poetry export --only main -f requirements.txt > requirements.txt
 COPY src /app/src 
