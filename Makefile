@@ -1,3 +1,5 @@
+SHELL:=/bin/bash -O globstar
+
 testing: 
 	pytest --cov-report term-missing --cov-report html --cov-branch --cov currency_converter
 
