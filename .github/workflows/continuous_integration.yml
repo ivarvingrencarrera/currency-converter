@@ -33,11 +33,12 @@ jobs:
   test:
     needs: build
     runs-on: ubuntu-latest
-    container:
-      image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
-      credentials:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    services:
+      container:
+        image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
+        credentials:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - 
         run: poetry run make lint
