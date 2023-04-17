@@ -1,11 +1,5 @@
 lint:
-	isort . 
-	ruff .
-	blue --check --diff --color .
-	mypy .
-	pip-audit
-	
-
+	isort . ruff . blue --check --diff --color . mypy . pip-audit
 
 format:
 	ruff --silent --exit-zero --fix .
