@@ -32,16 +32,17 @@ jobs:
 
   test:
     needs: build
+    name: Testing
     runs-on: ubuntu-latest
-    services:
-      container:
-        image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
-        credentials:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    container:
+      image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
+      credentials:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
-      - 
-        run: poetry run make lint
+      - name: Checkout
+        uses: actions/checkout@v2
+      - run: poetry run make test
     #secrets: inherit
 
   # lint:
