@@ -53,7 +53,7 @@ jobs:
         run: docker pull ${DOCKER_IMAGE}
       - 
         name: Testing
-        run: poetry run make test
+        run: make test
     env:
       DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
 
