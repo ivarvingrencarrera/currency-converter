@@ -44,7 +44,7 @@ jobs:
           name: Checkout
           uses: actions/checkout@v2
         - 
-          run: source /home/runner/work/currency_converter/currency_converter/.venv/bin/activate
+          run: source /app/.venv/bin/activate
         -
           name: Testing
           run: docker run --rm -e -t ${DOCKER_IMAGE} make ivar
