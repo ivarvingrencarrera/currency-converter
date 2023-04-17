@@ -32,6 +32,7 @@ jobs:
 
   test:
       needs: build
+      name: Testing
       runs-on: ubuntu-latest
       steps:
         - 
@@ -47,13 +48,14 @@ jobs:
           run: docker pull ${DOCKER_IMAGE}
         -
           name: Testing
-          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && run make test"
+          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make testing"
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
     
 
   lint:
       needs: build
+      name: Linting
       runs-on: ubuntu-latest
       steps:
         - 
@@ -69,6 +71,6 @@ jobs:
           run: docker pull ${DOCKER_IMAGE}
         -
           name: Testing
-          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && run make lint"
+          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make linting"
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
