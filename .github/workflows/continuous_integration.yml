@@ -71,7 +71,7 @@ jobs:
           run: docker pull ${DOCKER_IMAGE}
         - 
           name: Linting
-          run: make lint
+          run: isort .
         -
           name: Display lint results
           run: cat lint_result.txt
