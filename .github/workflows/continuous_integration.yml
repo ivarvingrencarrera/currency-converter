@@ -44,6 +44,8 @@ jobs:
           name: Checkout
           uses: actions/checkout@v2
         - 
+          run: source .venv/bin/activate
+        -
           name: Testing
           run: docker run --rm -e -t ${DOCKER_IMAGE} make ivar
       env:
