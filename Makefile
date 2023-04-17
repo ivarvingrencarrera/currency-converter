@@ -1,4 +1,7 @@
-lint:
+testing: 
+	pytest --cov-report term-missing --cov-report html --cov-branch --cov currency_converter
+
+linting:
 	isort .
 	@echo
 	ruff .
@@ -8,12 +11,7 @@ lint:
 	mypy .
 	@echo
 	pip-audit
-	
 
-
-format:
+formating:
 	ruff --silent --exit-zero --fix .
 	blue .
-
-test:
-	pytest --cov-report term-missing --cov-report html --cov-branch --cov currency_converter/
