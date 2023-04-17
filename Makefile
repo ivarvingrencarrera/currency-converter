@@ -1,5 +1,5 @@
 lint:
-	pip-audit
+	mypy . pip-audit
 
 format:
 	ruff --silent --exit-zero --fix .
