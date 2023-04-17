@@ -34,11 +34,11 @@ jobs:
     needs: build
     name: Testing
     runs-on: ubuntu-latest
-    container: currency_converter_development:${{github.run_number}}
-      # image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development:${{github.run_number}}
-      # credentials:
-      #   username: ${{ secrets.DOCKERHUB_USERNAME }}
-      #   password: ${{ secrets.DOCKERHUB_PASSWORD }}
+    container:
+      image: currency_converter_development:${{github.run_number}}
+      credentials:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
