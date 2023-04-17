@@ -1,11 +1,10 @@
-name: Continuous Integration
+name: Docker
 
-on: [push]
+on: 
+  workflow_call
 
 jobs:
-
-  build:
-    name: Build Docker Image
+  docker:
     runs-on: ubuntu-latest
     steps:
       - 
@@ -21,6 +20,11 @@ jobs:
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
       -
+        name: Download a Build Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+      -
         name: Build and Push
         uses: docker/build-push-action@v4
         with:
@@ -28,18 +32,3 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter:${{github.run_number}}
-          target: development
-
-  # test:
-  #   needs: build
-  #   uses: ./.github/workflows/test.yml
-  #   #secrets: inherit
-
-  # lint:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   image: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter:${{github.run_number}}
-  #   steps:
-
-  
-

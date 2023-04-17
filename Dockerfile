@@ -1,21 +1,37 @@
-# Use a lighter base image
-FROM python:3.11-slim-buster AS python
-ENV PYTHONUNBUFFERED=1
+#
+# Base image
+#
+
+FROM python:3.11-slim-bullseye AS base
 WORKDIR /app
+ENV PYTHONUNBUFFERED=1
+RUN apt-get update -y && apt-get upgrade -y
 
+#
+# Development image
+#
 
-# Install Python dependencies
-FROM python AS python-deps
+FROM base AS development 
 ENV POETRY_HOME=/opt/poetry
-ENV POETRY_VIRTUALENVS_IN_PROJECT=true
+ENV POETRY_VIRTUALENVS_IN_PROJECT=false
 ENV PATH="$POETRY_HOME/bin:$PATH"
-RUN pip install poetry
+RUN apt-get install curl -y
+RUN curl -sSL https://install.python-poetry.org | python -
 COPY pyproject.toml poetry.lock* ./
-RUN poetry install --only main --no-interaction --no-ansi --no-root -vvv
+RUN poetry install --without doc --no-interaction --no-ansi -vvv
+RUN poetry export --only main -f requirements.txt > requirements.txt
+COPY src /app/src 
+COPY test /app/test
+COPY Makefile /app
+EXPOSE 8000
 
 
-# Set the final image
-FROM python as runtime
+#
+# Production image
+#
+
+FROM base AS production
 COPY src /app/src
-COPY --from=python-deps /app/.venv /app/.venv
+COPY --from=development /app/requirements.txt ./
+RUN pip install --no-cache-dir -r /app/requirements.txt
 EXPOSE 8000
