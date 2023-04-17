@@ -48,8 +48,6 @@ jobs:
         -
           name: Testing
           run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make test"
-        -
-          run: make ivar
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
     
