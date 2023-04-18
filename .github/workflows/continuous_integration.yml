@@ -51,7 +51,7 @@ jobs:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
     
 
-  lint:
+  :
       needs: build
       uses: ./.github/workflows/test.yml
       secrets: inherit
