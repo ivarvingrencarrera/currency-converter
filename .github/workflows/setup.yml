@@ -26,6 +26,7 @@ jobs:
         uses: snok/install-poetry@v1
         with:
             virtualenvs-in-project: true
+            python-version: '3.11'
       - 
         name: Load cached venv
         id: cached-poetry-dependencies
