@@ -46,10 +46,10 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       - 
-        name: Install Poetry
-        uses: snok/install-poetry@v1
-        with:
-            virtualenvs-in-project: true  
+        # name: Install Poetry
+        # uses: snok/install-poetry@v1
+        # with:
+        #     virtualenvs-in-project: true  
       # - 
       #   name: Load cached venv
       #   id: cached-poetry-dependencies
@@ -59,4 +59,4 @@ jobs:
       #       key: venv-${{ hashFiles('**/poetry.lock') }}
       -
         name: Run tests
-        run: poetry run make testing
+        run: $HOME/.local/bin/poetry run make testing
