@@ -59,4 +59,4 @@ jobs:
             key: venv-${{ hashFiles('**/poetry.lock') }}
       -
         name: Run tests
-        run: $HOME/.local/bin/poetry make testing
+        run: poetry make testing
