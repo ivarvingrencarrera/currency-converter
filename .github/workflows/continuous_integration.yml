@@ -43,7 +43,7 @@ jobs:
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
         - 
           name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
         -
           run: docker pull ${DOCKER_IMAGE}
         -
@@ -66,7 +66,7 @@ jobs:
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
         - 
           name: Checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
         -
           name: Testing
           run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make linting"
