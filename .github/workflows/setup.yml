@@ -39,6 +39,8 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-ansi -vvv
 
+      - run: export PATH="$PATH:/usr/local/bin"
+
   test:
     needs: build
     runs-on: ubuntu-latest
