@@ -24,14 +24,14 @@ jobs:
           target: development
           #load: true
       - 
-        name: Upload a Build Artifact
-        uses: actions/upload-artifact@v3.1.2
-        with:
-        # name: Upload image
-        # uses: ishworkh/docker-image-artifact-upload@v1
+        # name: Upload a Build Artifact
+        # uses: actions/upload-artifact@v3.1.2
         # with:
+        name: Upload image
+        uses: ishworkh/docker-image-artifact-upload@v1
+        with:
           image: currency_converter_development
-          path: main
+          # path: main
 
 
   test:
@@ -39,17 +39,18 @@ jobs:
       name: Testing
       runs-on: ubuntu-latest
       steps:
-        - name: Download a Build Artifact
-          uses: actions/download-artifact@v3.0.0
+        -  
+          name: Download image
+          uses: ishworkh/docker-image-artifact-download@v1
           with:
             image: currency_converter_development
         -
           name: Testing
-          #run: docker run --help
+          run: docker run --help
           #run: docker run --rm -t ${DOCKER_IMAGE} 
           #   /bin/bash -c "source /app/.venv/bin/activate && 
           #   make testing"
-          run: docker run -t currency_converter_development /bin/bash -c "source .venv/bin/activate && make testing"
+          #run: docker run -t currency_converter_development /bin/bash -c "source .venv/bin/activate && make testing"
 
 
   lint:
