@@ -1,0 +1,62 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v3
+      - 
+        name: Set up python
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.11'
+      - 
+        name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+            virtualenvs-in-project: true
+      - 
+        name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+            path: .venv
+            key: venv-${{ hashFiles('**/poetry.lock') }}
+      - 
+        name: Install dependencies
+        if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
+        run: poetry install --no-interaction --no-ansi -vvv
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v3
+      - 
+        name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+            path: .venv
+            key: venv-${{ hashFiles('**/poetry.lock') }}
+      - 
+        name: Run tests
+        run: poetry run make testing
+
+         
+
+
+      
