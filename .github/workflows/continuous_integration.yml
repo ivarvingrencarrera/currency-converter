@@ -54,4 +54,5 @@ jobs:
   lint:
       needs: build
       uses: ./.github/workflows/test.yml
+      name: Linting
       secrets: inherit
