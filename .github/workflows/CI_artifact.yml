@@ -31,6 +31,7 @@ jobs:
         # uses: ishworkh/docker-image-artifact-upload@v1
         # with:
           image: currency_converter_development
+          path: main
 
 
   test:
