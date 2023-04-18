@@ -46,7 +46,9 @@ jobs:
           uses: actions/checkout@v3
         -
           name: Testing
-          run: docker run --rm -t ${DOCKER_IMAGE} /bin/bash -c "source /app/.venv/bin/activate && make testing"
+          run: docker run --rm -t ${DOCKER_IMAGE}
+            /bin/bash -c "source /app/.venv/bin/activate && 
+            make testing"
       env:
         DOCKER_IMAGE: ${{ secrets.DOCKERHUB_USERNAME }}/currency_converter_development
 
