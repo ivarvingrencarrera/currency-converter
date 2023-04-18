@@ -4,6 +4,7 @@ on: workflow_call
 
 jobs:
   lint:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
       - 
