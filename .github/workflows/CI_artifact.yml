@@ -42,7 +42,9 @@ jobs:
             image: currency_converter_development
         -
           name: Testing
-          run: make testing
+          run: docker run --rm -t ${DOCKER_IMAGE} 
+            /bin/bash -c "source /app/.venv/bin/activate && 
+            make testing"
 
 
   lint:
