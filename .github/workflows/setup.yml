@@ -39,8 +39,6 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-ansi -vvv
 
-      - run: export PATH="$PATH:/usr/local/bin"
-
   test:
     needs: build
     runs-on: ubuntu-latest
@@ -55,6 +53,7 @@ jobs:
         with:
             path: .venv
             key: venv-${{ hashFiles('**/poetry.lock') }}
+      - run: export PATH="$PATH:/usr/local/bin"
       - 
         name: Run tests
         run: poetry run make testing
