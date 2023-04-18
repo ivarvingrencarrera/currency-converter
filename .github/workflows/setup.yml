@@ -60,5 +60,5 @@ jobs:
       - 
         name: Run tests
         run: |
-          source $HOME/.poetry/env
+          source /home/runner/.local/bin/poetry env
           poetry run make testing
