@@ -22,11 +22,14 @@ jobs:
           push: false
           tags: currency_converter_development
           target: development
-          load: true
+          #load: true
       - 
-        name: Upload image
-        uses: ishworkh/docker-image-artifact-upload@v1
+        name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.1.2
         with:
+        # name: Upload image
+        # uses: ishworkh/docker-image-artifact-upload@v1
+        # with:
           image: currency_converter_development
 
 
