@@ -39,9 +39,8 @@ jobs:
       name: Testing
       runs-on: ubuntu-latest
       steps:
-        - 
-          name: Download image
-          uses: ishworkh/docker-image-artifact-download@v1
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v3.0.0
           with:
             image: currency_converter_development
         -
