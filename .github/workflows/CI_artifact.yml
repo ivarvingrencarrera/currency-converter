@@ -49,7 +49,7 @@ jobs:
           #run: docker run --rm -t ${DOCKER_IMAGE} 
           #   /bin/bash -c "source /app/.venv/bin/activate && 
           #   make testing"
-          run: docker run -it currency_converter_development /bin/bash -c "source .venv/bin/activate && make testing"
+          run: docker run -t currency_converter_development /bin/bash -c "source .venv/bin/activate && make testing"
 
 
   lint:
