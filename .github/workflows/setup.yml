@@ -60,5 +60,5 @@ jobs:
       - 
         name: Run tests
         run: |
-          source /home/runner/.local/bin/poetry env
+          source .venv/bin/activate
           poetry run make testing
