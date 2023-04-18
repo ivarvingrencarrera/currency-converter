@@ -49,8 +49,7 @@ jobs:
         name: Install Poetry
         uses: snok/install-poetry@v1
         with:
-            virtualenvs-in-project: true  
-            python-version: '3.11'
+            virtualenvs-in-project: true
       -
         name: Run tests
-        run: $HOME/.local/bin/poetry run make testing
+        run: poetry run make testing
