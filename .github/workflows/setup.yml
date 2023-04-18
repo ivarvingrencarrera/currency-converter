@@ -23,7 +23,9 @@ jobs:
           python-version: '3.11'
       - 
         name: Install Poetry
-        uses: Gr1N/setup-poetry@v8
+        uses: snok/install-poetry@v1
+        with:
+            virtualenvs-in-project: true
       - 
         name: Load cached venv
         id: cached-poetry-dependencies
@@ -43,11 +45,11 @@ jobs:
       - 
         name: Checkout
         uses: actions/checkout@v3
-      # - 
-      #   name: Install Poetry
-      #   uses: snok/install-poetry@v1
-      #   with:
-      #       virtualenvs-in-project: true
+      - 
+        name: Install Poetry
+        uses: snok/install-poetry@v1
+        with:
+            virtualenvs-in-project: true
       - 
         name: Load cached venv
         id: cached-poetry-dependencies
@@ -57,4 +59,4 @@ jobs:
             key: venv-${{ hashFiles('**/poetry.lock') }}
       - 
         name: Run tests
-        run: poetry run make testing
+        run: home/runner/.local/bin/poetry run make testing
