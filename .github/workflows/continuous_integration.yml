@@ -8,6 +8,7 @@ on:
 
 jobs:
   testing:
+    name: Testing
     runs-on: ubuntu-latest
     steps:
       - 
@@ -38,7 +39,9 @@ jobs:
         name: Run tests
         run: poetry run make testing
   
+
   linting:
+    name: Linting
     runs-on: ubuntu-latest
     steps:
       - 
@@ -64,7 +67,7 @@ jobs:
       - 
         name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
-        run: poetry install --with test --no-interaction --no-ansi -vvv
+        run: poetry install --with lint --no-interaction --no-ansi -vvv
       -
         name: Run tests
         run: poetry run make linting
