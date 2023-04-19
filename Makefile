@@ -15,6 +15,3 @@ linting:
 formating:
 	ruff --silent --exit-zero --fix .
 	blue .
-
-ivar:
-	pytest --version
