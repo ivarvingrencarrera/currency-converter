@@ -51,16 +51,36 @@ jobs:
         uses: snok/install-poetry@v1
         with:
             virtualenvs-in-project: true
-      # - 
-      #   name: Load cached venv
-      #   id: cached-poetry-dependencies
-      #   uses: actions/cache@v3
-      #   with:
-      #       path: .venv
-      #       key: venv-${{ hashFiles('**/poetry.lock') }}
-      # -
-      #   run : source .venv/bin/activate
+      - 
+        name: Load cached venv
+        id: cached-poetry-dependencies
+        uses: actions/cache@v3
+        with:
+            path: .venv
+            key: venv-${{ hashFiles('**/poetry.lock') }}
       -
-        run: poetry --version
+        name: Run tests
+        run: poetry run make testing
 
-        #run: poetry run make testing
+  lint:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - 
+          name: Checkout
+          uses: actions/checkout@v3
+        - 
+          name: Install Poetry
+          uses: snok/install-poetry@v1
+          with:
+              virtualenvs-in-project: true
+        - 
+          name: Load cached venv
+          id: cached-poetry-dependencies
+          uses: actions/cache@v3
+          with:
+              path: .venv
+              key: venv-${{ hashFiles('**/poetry.lock') }}
+        -
+          name: Run lint
+          run: poetry run make linting
