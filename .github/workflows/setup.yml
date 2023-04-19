@@ -62,6 +62,6 @@ jobs:
         run : source .venv/bin/activate
       -
         name: Run tests
-        run: $HOME/.local/bin/poetry --version
+        run: $HOME/.local/bin/poetry/poetry --version
 
         #run: poetry run make testing
