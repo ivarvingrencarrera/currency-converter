@@ -61,5 +61,5 @@ jobs:
         name: Run tests
         run: poetry --version
         env:
-          path: /home/runner/.local/bin
+          path: /home/runner/.local/bin/poetry
         #run: poetry run make testing
