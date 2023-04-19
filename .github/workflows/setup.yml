@@ -37,8 +37,7 @@ jobs:
         name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-ansi -vvv
-      -
-        run: pip install poetry
+
 
   test:
     needs: build
@@ -60,8 +59,9 @@ jobs:
             path: .venv
             key: venv-${{ hashFiles('**/poetry.lock') }}
       -
+        run : source .venv/bin/activate
+      -
         name: Run tests
-        run: poetry --version
-        env:
-          path: .venv/bin/activate
+        run: $HOME/.local/bin/poetry --version
+
         #run: poetry run make testing
