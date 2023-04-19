@@ -37,6 +37,8 @@ jobs:
         name: Install dependencies
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install --no-interaction --no-ansi -vvv
+      -
+        run: pip install poetry
 
   test:
     needs: build
@@ -61,5 +63,5 @@ jobs:
         name: Run tests
         run: poetry --version
         env:
-          path: /home/runner/.local/bin/poetry
+          path: .venv/bin/activate
         #run: poetry run make testing
