@@ -15,3 +15,6 @@ linting:
 formating:
 	ruff --silent --exit-zero --fix .
 	blue .
+
+install_hooks:
+	@ scripts/install_hooks.sh
